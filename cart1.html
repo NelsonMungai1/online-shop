@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cart-container"></div>
+    <script src="index.js"></script>
+    <script>
+        // Get the cart container element
+const cartContainer = document.querySelector('.cart-container');
+
+// Retrieve the cart items from the local storage
+const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+
+// Loop through the cart items array and create a new element for each item
+cartItems.forEach((item) => {
+  // Create a new element to display the product in the cart
+  const productElement = document.createElement('div');
+
+  // Set the innerHTML of the new element to the product name and price
+  productElement.innerHTML = `
+    <div class="product">
+      <span class="name">${item.name}</span>
+      <span class="price">${item.price}</span>
+    </div>
+  `;
+
+  // Append the new element to the cart container
+  cartContainer.appendChild(productElement);
+});
+    </script>
+</body>
+</html>
